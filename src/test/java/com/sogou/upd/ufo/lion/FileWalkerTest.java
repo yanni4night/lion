@@ -9,7 +9,7 @@ public class FileWalkerTest extends TestCase {
 
 	public static void main(String[] args) {
 		
-		FileWalker fw=new FileWalker(Config.WD_TPL_DIR);
+		FileWalker fw=new FileWalker(Config.WD_PREFIX,".css,.js");
 		String files[]=fw.getFiles();
 		System.out.println(files.length);
 	}

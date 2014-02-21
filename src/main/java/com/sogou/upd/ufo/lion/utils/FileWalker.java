@@ -10,7 +10,8 @@ import java.util.LinkedList;
  */
 public class FileWalker {
 	private LinkedList<String> paths = new LinkedList<String>();
-	private String rootPath, ext;
+	private String rootPath;
+	private String[] exts;
 	
 	/**
 	 * 
@@ -26,7 +27,7 @@ public class FileWalker {
 	 */
 	public FileWalker(String rootPath, String ext) {
 		this.rootPath = rootPath;
-		this.ext = ext;
+		this.exts = null==ext?null:ext.split(",");
 	}
 	/**
 	 * 
@@ -49,6 +50,28 @@ public class FileWalker {
 		}
 		return files;
 	}
+	
+	private boolean validateExt(String filename){
+		if(exts==null||exts.length==0){
+			return true;
+		}
+		for(int i=exts.length-1;i>=0;--i){
+			if(filename.endsWith(exts[i]))return true;
+		}
+		return false;
+	}
+	
+	private String removeExt(String filename){
+		if(exts==null||exts.length==0){
+			return filename;
+		}
+		for(int i=exts.length-1;i>=0;--i){
+			if(filename.endsWith(exts[i])){
+				return filename.substring(0,filename.length()-exts[i].length());
+			}
+		}
+		return filename;
+	}
 	/**
 	 * 
 	 * @return
@@ -57,8 +80,8 @@ public class FileWalker {
 		String[] files=getFiles();
 		for(int i=files.length-1;i>=0;--i){
 			files[i]=files[i].substring(rootPath.length());
-			if(ext!=null&&files[i].endsWith(ext)){
-				files[i]=files[i].substring(0,files[i].length()-ext.length());
+			if(validateExt(files[i])){
+				files[i]=removeExt(files[i]);
 			}
 		}
 		return files;
@@ -70,9 +93,7 @@ public class FileWalker {
 			return;
 		}
 		else if (file.isFile()) {
-			if (ext != null && file.getName().endsWith(ext)) {
-				paths.add(filepath);
-			} else if (null == ext) {
+			if (validateExt(filepath)) {
 				paths.add(filepath);
 			}
 		} else if (file.isDirectory()) {

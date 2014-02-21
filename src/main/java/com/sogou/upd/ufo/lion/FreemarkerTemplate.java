@@ -10,6 +10,8 @@ import freemarker.template.DefaultObjectWrapper;
 /**
  * 
  * @author yinyong
+ * @since 1.0.0
+ * @version 1.0.0
  * @see {@link com.sogou.upd.ufo.lion.Template}
  */
 public class FreemarkerTemplate implements Template {

@@ -1,6 +1,5 @@
 package com.sogou.upd.ufo.lion;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -11,18 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sogou.upd.ufo.lion.utils.FileWalker;
 
-import freemarker.template.Configuration;
-import freemarker.template.DefaultObjectWrapper;
-import freemarker.template.Template;
-
 /**
  * 
  * @author yinyong
- * 
+ * @since 1.0.0
+ * @version 1.0.0
  */
 public final class Manager {
 
 	private FreemarkerTemplate template;
+
 	/**
 	 * 
 	 * @throws Exception
@@ -33,6 +30,7 @@ public final class Manager {
 	}
 
 	/**
+	 * Show templates list.
 	 * 
 	 * @param req
 	 * @param resp
@@ -42,11 +40,8 @@ public final class Manager {
 			throws IOException {
 		PrintWriter out = resp.getWriter();
 		Map<String, Object> data = new HashMap<String, Object>();
-		FileWalker fw = new FileWalker(Config.WD_TPL_DIR,".ftl");
-		String[] empty = {};//TODO
+		FileWalker fw = new FileWalker(Config.WD_TPL_DIR, ".ftl");
 		data.put("tpls", fw.getRelFilesWithoutExt());
-		data.put("module_tpls", empty);
-		data.put("common_tpls", empty);
 		try {
 			out.print(template.render("index.ftl", data));
 		} catch (Exception e) {
@@ -56,6 +51,7 @@ public final class Manager {
 	}
 
 	/**
+	 * Show static resources(images,javascript,css).
 	 * 
 	 * @param req
 	 * @param resp
@@ -64,10 +60,23 @@ public final class Manager {
 	public void serveStatic(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		PrintWriter out = resp.getWriter();
-		out.print(req.getRequestURI());
+		Map<String, Object> data = new HashMap<String, Object>();
+		FileWalker fw = new FileWalker(Config.WD_CSS_DIR, ".css");
+		data.put("css", fw.getRelFiles());
+		fw = new FileWalker(Config.WD_IMG_DIR, ".png,.gif,.bmp,.jpg");
+		data.put("img", fw.getRelFiles());
+		fw = new FileWalker(Config.WD_JS_DIR, ".js");
+		data.put("js", fw.getRelFiles());
+		try {
+			out.print(template.render("static.ftl", data));
+		} catch (Exception e) {
+			e.printStackTrace();
+			resp.sendError(500, e.getMessage());
+		}
 	}
 
 	/**
+	 * Show help.
 	 * 
 	 * @param req
 	 * @param resp
@@ -75,7 +84,6 @@ public final class Manager {
 	 */
 	public void serveHelp(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		PrintWriter out = resp.getWriter();
-		out.print(req.getRequestURI());
+		resp.sendRedirect("/");
 	}
 }

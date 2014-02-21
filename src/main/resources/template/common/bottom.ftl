@@ -17,7 +17,8 @@
     };
 
     var preventEventDefault=function(e){
-        e.preventDefault&&e.preventDefault();
+    	if(!e)return;
+        ('function'===typeof e.preventDefault)&&e.preventDefault();
         (undefined!==e.returnValue)&&(e.returnValue=false);
     };
 
@@ -33,7 +34,7 @@
             }
             document.getElementById('section-'+menu).style.display='block';
 
-            var menuitems = $('.menu a');console.log(menuitems)
+            var menuitems = $('.menu a');
             for(var i=0,len=menuitems.length;i<len;++i){
                 menuitems[i].style.color='';
                 menuitems[i].style.backgroundColor='';

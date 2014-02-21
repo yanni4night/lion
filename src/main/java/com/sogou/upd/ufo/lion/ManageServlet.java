@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Handle /
+ * Handle *.m
  * 
  * @author yinyong
  * @since 1.0.0
