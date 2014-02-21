@@ -12,4 +12,20 @@
         <servlet-name>entry</servlet-name>
         <url-pattern>*.ut</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>manage</servlet-name>
+        <servlet-class>com.sogou.upd.ufo.lion.ManageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>manage</servlet-name>
+        <url-pattern>/index.m</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>manage</servlet-name>
+        <url-pattern>/static.m</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>manage</servlet-name>
+        <url-pattern>/help.m</url-pattern>
+    </servlet-mapping>
 </web-app>

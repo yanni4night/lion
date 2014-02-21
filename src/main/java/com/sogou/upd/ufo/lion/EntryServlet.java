@@ -5,16 +5,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -26,10 +24,6 @@ import java.util.Map;
 public final class EntryServlet extends HttpServlet {
 
 	private Template template;
-
-	private static String WD_PREFIX = "./src/main/webapp";
-	private static String DATA_DIR = WD_PREFIX + "/_data";
-	private static String TPL_DIR = WD_PREFIX + "/template";
 
 	private static final long serialVersionUID = 1L;
 
@@ -71,7 +65,7 @@ public final class EntryServlet extends HttpServlet {
 		super.init();
 		template = new FreemarkerTemplate();
 		try {
-			template.init(TPL_DIR);
+			template.init(Config.WD_TPL_DIR);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -89,7 +83,7 @@ public final class EntryServlet extends HttpServlet {
   		String token=url.replaceFirst("\\.ut$", "");
   		try{
   			Gson gson=new Gson();
-  			Map<String,Object> data=gson.fromJson(getFileContent(DATA_DIR+token+".json"),new TypeToken<Map<String,Object>>() {}.getType());
+  			Map<String,Object> data=gson.fromJson(getFileContent(Config.WD_DATA_DIR+token+".json"),new TypeToken<Map<String,Object>>() {}.getType());
   			out.print(template.render(token+".ftl", data));
   		}catch(Exception e){
   			resp.sendError(500, e.getMessage());

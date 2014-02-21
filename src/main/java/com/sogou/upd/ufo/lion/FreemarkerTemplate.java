@@ -18,7 +18,7 @@ public class FreemarkerTemplate implements Template {
 
 	@Override
 	public void init(String tempalteDir) throws Exception {
-		this.cfg = new Configuration();
+		cfg = new Configuration();
 		cfg.setDirectoryForTemplateLoading(new File(tempalteDir));
 		cfg.setObjectWrapper(new DefaultObjectWrapper());
 	}
