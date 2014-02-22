@@ -28,4 +28,12 @@
         <servlet-name>manage</servlet-name>
         <url-pattern>/help.m</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>data</servlet-name>
+        <servlet-class>com.sogou.upd.ufo.lion.DataServlet</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>data</servlet-name>
+        <url-pattern>*.data</url-pattern>
+    </servlet-mapping>
 </web-app>

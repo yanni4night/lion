@@ -8,13 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 
+import com.sogou.upd.ufo.lion.utils.*;
 /**
  * Handle *.ut
  * 
@@ -26,39 +24,6 @@ public final class EntryServlet extends HttpServlet {
 	private Template template;
 
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * 
-	 * @param filename
-	 * @return
-	 */
-	private static String getFileContent(String filename) {
-		StringBuffer content = new StringBuffer();
-		FileReader fr = null;
-		BufferedReader br = null;
-		try {
-			fr = new FileReader(filename);
-			br = new BufferedReader(fr);
-			String line;
-			while ((line = br.readLine()) != null) {
-				content.append(line);
-			}
-			br.close();
-			fr.close();
-		} catch (FileNotFoundException e) {
-			return "";
-		} catch (IOException e) {
-			return "";
-		} finally {
-			try {
-				br.close();
-				fr.close();
-			} catch (Exception ex) {
-			}
-		}
-
-		return content.toString();
-	}
 
 	@Override
 	public void init() throws ServletException {
@@ -83,7 +48,7 @@ public final class EntryServlet extends HttpServlet {
   		String token=url.replaceFirst("\\.ut$", "");
   		try{
   			Gson gson=new Gson();
-  			Map<String,Object> data=gson.fromJson(getFileContent(Config.WD_DATA_DIR+token+".json"),new TypeToken<Map<String,Object>>() {}.getType());
+  			Map<String,Object> data=gson.fromJson(Utils.getFileContent(Config.WD_DATA_DIR+token+".json"),new TypeToken<Map<String,Object>>() {}.getType());
   			out.print(template.render(token+".ftl", data));
   		}catch(Exception e){
   			resp.sendError(500, e.getMessage());
