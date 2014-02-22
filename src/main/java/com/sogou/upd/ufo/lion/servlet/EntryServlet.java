@@ -12,8 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 
-import com.sogou.upd.ufo.lion.Config;
-import com.sogou.upd.ufo.lion.template.FreemarkerTemplate;
+import com.sogou.upd.ufo.lion.Application;
 import com.sogou.upd.ufo.lion.template.Template;
 import com.sogou.upd.ufo.lion.utils.*;
 /**
@@ -31,12 +30,7 @@ public final class EntryServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		template = new FreemarkerTemplate();
-		try {
-			template.init(Config.WD_TPL_DIR);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		template = Application.getInstance().getTemplate();
 	}
 	/**
 	 * 
@@ -51,8 +45,8 @@ public final class EntryServlet extends HttpServlet {
   		String token=url.replaceFirst("\\.ut$", "");
   		try{
   			Gson gson=new Gson();
-  			Map<String,Object> data=gson.fromJson(Utils.getFileContent(Config.WD_DATA_DIR+token+".json"),new TypeToken<Map<String,Object>>() {}.getType());
-  			out.print(template.render(token+".ftl", data));
+  			Map<String,Object> data=gson.fromJson(Utils.getFileContent(Application.WD_DATA_DIR+token+".json"),new TypeToken<Map<String,Object>>() {}.getType());
+  			out.print(template.render(token+".ftl", data));//TODO:ext configurable
   		}catch(Exception e){
   			resp.sendError(500, e.getMessage());
   			e.printStackTrace();

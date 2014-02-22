@@ -27,7 +27,7 @@ public final class Manager {
 	 */
 	public Manager() throws Exception {
 		template = new FreemarkerTemplate();
-		template.init(Config.MG_TPL_DIR);
+		template.init(Application.MG_TPL_DIR);
 	}
 
 	/**
@@ -41,7 +41,7 @@ public final class Manager {
 			throws IOException {
 		PrintWriter out = resp.getWriter();
 		Map<String, Object> data = new HashMap<String, Object>();
-		FileWalker fw = new FileWalker(Config.WD_TPL_DIR, ".ftl");
+		FileWalker fw = new FileWalker(Application.WD_TPL_DIR, ".ftl");
 		data.put("tpls", fw.getRelFilesWithoutExt());
 		try {
 			out.print(template.render("index.ftl", data));
@@ -62,11 +62,11 @@ public final class Manager {
 			throws IOException {
 		PrintWriter out = resp.getWriter();
 		Map<String, Object> data = new HashMap<String, Object>();
-		FileWalker fw = new FileWalker(Config.WD_CSS_DIR, ".css");
+		FileWalker fw = new FileWalker(Application.WD_CSS_DIR, ".css");
 		data.put("css", fw.getRelFiles());
-		fw = new FileWalker(Config.WD_IMG_DIR, ".png,.gif,.bmp,.jpg");
+		fw = new FileWalker(Application.WD_IMG_DIR, ".png,.gif,.bmp,.jpg");
 		data.put("img", fw.getRelFiles());
-		fw = new FileWalker(Config.WD_JS_DIR, ".js");
+		fw = new FileWalker(Application.WD_JS_DIR, ".js");
 		data.put("js", fw.getRelFiles());
 		try {
 			out.print(template.render("static.ftl", data));

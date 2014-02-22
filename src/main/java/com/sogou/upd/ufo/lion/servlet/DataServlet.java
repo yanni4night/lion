@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sogou.upd.ufo.lion.Config;
+import com.sogou.upd.ufo.lion.Application;
 import com.sogou.upd.ufo.lion.utils.Utils;
 /**
  * 
@@ -25,7 +25,7 @@ public class DataServlet extends HttpServlet {
 		String path=req.getRequestURI();
 		String jsonPath=path.replaceFirst("\\.data$",".json");
 		resp.setContentType("text/json;charset=utf-8");
-		resp.getWriter().print(Utils.getFileContent(Config.WD_DATA_DIR+jsonPath));
+		resp.getWriter().print(Utils.getFileContent(Application.WD_DATA_DIR+jsonPath));
 	}
 	
 	@Override

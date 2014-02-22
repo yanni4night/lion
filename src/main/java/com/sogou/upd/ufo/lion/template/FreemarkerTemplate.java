@@ -8,6 +8,7 @@ import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 
 /**
+ * Freemarker Template implement.
  * 
  * @author yinyong
  * @since 1.0.0
@@ -19,7 +20,7 @@ public class FreemarkerTemplate implements Template {
 	private Configuration cfg;
 
 	@Override
-	public void init(String tempalteDir) throws Exception {
+	public void init(String tempalteDir,Object ...params) throws Exception {
 		cfg = new Configuration();
 		cfg.setDirectoryForTemplateLoading(new File(tempalteDir));
 		cfg.setObjectWrapper(new DefaultObjectWrapper());
