@@ -1,4 +1,4 @@
-package com.sogou.upd.ufo.lion;
+package com.sogou.upd.ufo.lion.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 
+import com.sogou.upd.ufo.lion.Config;
+import com.sogou.upd.ufo.lion.template.FreemarkerTemplate;
+import com.sogou.upd.ufo.lion.template.Template;
 import com.sogou.upd.ufo.lion.utils.*;
 /**
  * Handle *.ut

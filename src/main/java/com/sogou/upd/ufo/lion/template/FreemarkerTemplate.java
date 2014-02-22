@@ -1,4 +1,4 @@
-package com.sogou.upd.ufo.lion;
+package com.sogou.upd.ufo.lion.template;
 
 import java.io.File;
 import java.io.StringWriter;
@@ -12,7 +12,7 @@ import freemarker.template.DefaultObjectWrapper;
  * @author yinyong
  * @since 1.0.0
  * @version 1.0.0
- * @see {@link com.sogou.upd.ufo.lion.Template}
+ * @see {@link com.sogou.upd.ufo.lion.template.Template}
  */
 public class FreemarkerTemplate implements Template {
 

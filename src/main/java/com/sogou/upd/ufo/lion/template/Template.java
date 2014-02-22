@@ -1,4 +1,4 @@
-package com.sogou.upd.ufo.lion;
+package com.sogou.upd.ufo.lion.template;
 
 
 /**

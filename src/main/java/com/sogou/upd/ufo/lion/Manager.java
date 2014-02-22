@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sogou.upd.ufo.lion.template.FreemarkerTemplate;
 import com.sogou.upd.ufo.lion.utils.FileWalker;
 
 /**

@@ -6,7 +6,7 @@
     http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
         <servlet-name>entry</servlet-name>
-        <servlet-class>com.sogou.upd.ufo.lion.EntryServlet</servlet-class>
+        <servlet-class>com.sogou.upd.ufo.lion.servlet.EntryServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>entry</servlet-name>
@@ -14,7 +14,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>manage</servlet-name>
-        <servlet-class>com.sogou.upd.ufo.lion.ManageServlet</servlet-class>
+        <servlet-class>com.sogou.upd.ufo.lion.servlet.ManageServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>manage</servlet-name>
@@ -30,7 +30,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>data</servlet-name>
-        <servlet-class>com.sogou.upd.ufo.lion.DataServlet</servlet-class>
+        <servlet-class>com.sogou.upd.ufo.lion.servlet.DataServlet</servlet-class>
     </servlet>
      <servlet-mapping>
         <servlet-name>data</servlet-name>
