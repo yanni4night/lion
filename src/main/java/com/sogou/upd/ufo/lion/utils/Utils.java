@@ -1,6 +1,7 @@
 package com.sogou.upd.ufo.lion.utils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -23,6 +24,10 @@ public final class Utils {
 		FileReader fr = null;
 		BufferedReader br = null;
 		try {
+			File file=new File(filename);
+			if(file.exists()&&file.isFile()&&file.length()>1024*1024){//TODO configurable
+				throw new IllegalAccessException("");
+			}
 			fr = new FileReader(filename);
 			br = new BufferedReader(fr);
 			String line;
@@ -32,8 +37,13 @@ public final class Utils {
 			br.close();
 			fr.close();
 		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 			return "";
 		} catch (IOException e) {
+			e.printStackTrace();
+			return "";
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
 			return "";
 		} finally {
 			try {
