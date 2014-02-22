@@ -1,7 +1,9 @@
 package com.sogou.upd.ufo.lion;
 
-import com.sogou.upd.ufo.lion.template.FreemarkerTemplate;
+import java.lang.reflect.Constructor;
+
 import com.sogou.upd.ufo.lion.template.Template;
+import com.sogou.upd.ufo.lion.template.TemplateEngineSetting;
 
 /**
  * Top application context.
@@ -41,30 +43,40 @@ public final class Application {
 	 * images directory in working-directory
 	 */
 	public static String WD_IMG_DIR = WD_STATIC_DIR + "/img";
+
+	public static String TPL_EXT = "";
 	private static volatile Application instance = new Application();
 	private Template template;
 
 	private Config config = new Config();
+	private String engineName;
 
 	private Application() {
 		super();
 		config.init();
 		initTemplate();
+		TPL_EXT = TemplateEngineSetting.getTplExtByName(engineName);
 	}
 
 	private void initTemplate() {
 		Object tplEngine = config.get(Config.KEY_TEMPLATE);
-		if ("velocity".equals(tplEngine)) {
-			// TODO:velocity to be supported
-		} else {
-			// freemarker is default
-			template = new FreemarkerTemplate();
-			try {
-				template.init(Application.WD_TPL_DIR);
-			} catch (Exception e) {
-				template = null;
-				e.printStackTrace();
-			}
+		engineName = null;
+		try {
+			engineName = (String) tplEngine;
+		} catch (ClassCastException e) {
+			e.printStackTrace();
+		}
+
+		Class<? extends Template> clazz = TemplateEngineSetting
+				.getTemplateClassByName(engineName);
+		try {
+			Constructor<? extends Template> constructor = clazz
+					.getConstructor();
+			template = constructor.newInstance();
+			template.init(Application.WD_TPL_DIR);
+		} catch (Exception e) {
+			template = null;
+			e.printStackTrace();
 		}
 	}
 
@@ -73,6 +85,7 @@ public final class Application {
 	}
 
 	/**
+	 * Get global only {@link com.sogou.upd.ufo.lion.Application}
 	 * 
 	 * @return
 	 */

@@ -1,10 +1,13 @@
 package com.sogou.upd.ufo.lion.template;
 
+import java.util.Map;
+
 
 /**
  * 
  * @author yinyong
- *
+ * @since 1.0.0
+ * @version 1.0.0
  */
 public interface Template {
 	/**
@@ -21,5 +24,5 @@ public interface Template {
 	  * @return
 	  * @throws Exception
 	  */
-	 String render(String tplname,Object data) throws Exception;
+	 String render(String tplname,Map<String, Object> data) throws Exception;
 }

@@ -2,7 +2,7 @@ package com.sogou.upd.ufo.lion.template;
 
 import java.io.File;
 import java.io.StringWriter;
-
+import java.util.Map;
 
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
@@ -27,7 +27,7 @@ public class FreemarkerTemplate implements Template {
 	}
 
 	@Override
-	public String render(String tplname, Object data) throws Exception {
+	public String render(String tplname, Map<String, Object> data) throws Exception {
 		freemarker.template.Template tpl = cfg.getTemplate(tplname);
 		StringWriter sw = new StringWriter();
 		tpl.process(data, sw);

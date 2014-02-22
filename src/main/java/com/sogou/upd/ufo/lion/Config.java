@@ -8,7 +8,7 @@ import com.google.gson.reflect.TypeToken;
 import com.sogou.upd.ufo.lion.utils.Utils;
 
 /**
- * Global configuration.
+ * Global configuration from manifest.json.
  * 
  * @author yinyong
  * @since 1.0.0
@@ -16,8 +16,8 @@ import com.sogou.upd.ufo.lion.utils.Utils;
  */
 public final class Config {
 
-	public static String KEY_TEMPLATE="template";
-	
+	public static String KEY_TEMPLATE = "template";
+
 	private boolean initialized = false;
 
 	private Map<String, Object> manifest = new HashMap<String, Object>();
@@ -25,6 +25,7 @@ public final class Config {
 
 	/**
 	 * Initialize with extra default map.
+	 * 
 	 * @param extra
 	 */
 	public void init(Map<String, Object> extra) {
@@ -34,10 +35,11 @@ public final class Config {
 		initDefaultManifest(extra);
 		initialized = true;
 	}
+
 	/**
 	 * Initialize.
 	 */
-	public void init(){
+	public void init() {
 		this.init(null);
 	}
 
@@ -47,14 +49,13 @@ public final class Config {
 	 * @return
 	 */
 	public Object get(String key) {
-		Object ret=manifest.get(key);
-		return null==ret?defaultManifest.get(key):ret;
+		Object ret = manifest.get(key);
+		return null == ret ? defaultManifest.get(key) : ret;
 	}
 
 	private void initDefaultManifest(Map<String, Object> extra) {
 		defaultManifest.put("template", "freemarker");
-		if (null != extra)
-		{
+		if (null != extra) {
 			defaultManifest.putAll(extra);
 		}
 	}

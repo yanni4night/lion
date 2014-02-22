@@ -12,6 +12,7 @@ import com.sogou.upd.ufo.lion.template.FreemarkerTemplate;
 import com.sogou.upd.ufo.lion.utils.FileWalker;
 
 /**
+ * System management
  * 
  * @author yinyong
  * @since 1.0.0
@@ -41,7 +42,8 @@ public final class Manager {
 			throws IOException {
 		PrintWriter out = resp.getWriter();
 		Map<String, Object> data = new HashMap<String, Object>();
-		FileWalker fw = new FileWalker(Application.WD_TPL_DIR, ".ftl");
+		FileWalker fw = new FileWalker(Application.WD_TPL_DIR,
+				Application.TPL_EXT);
 		data.put("tpls", fw.getRelFilesWithoutExt());
 		try {
 			out.print(template.render("index.ftl", data));

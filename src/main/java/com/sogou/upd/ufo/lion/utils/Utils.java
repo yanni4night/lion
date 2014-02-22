@@ -16,6 +16,7 @@ import java.io.IOException;
 public final class Utils {
 	/**
 	 * Get total content of a file.
+	 * 
 	 * @param filename
 	 * @return content as String
 	 */
