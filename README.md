@@ -29,6 +29,10 @@ changelog
 - 2014/02/21:initialize;freemarker local supported;
 - 2014/02/22:support velocity.
 
+todo
+======
+ - split lion and project
+ - building tool
  
 contact
 ======
