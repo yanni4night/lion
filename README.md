@@ -21,7 +21,7 @@ You can change the port in _pom.xml_.
 develop
 ======
 1. Write JSON files in *src/main/webapp/\_data/*	
-2. 2.Write templates in *src/main/webapp/template/*
+2. Write templates in *src/main/webapp/template/*
 
 changelog
 ======
