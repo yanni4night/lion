@@ -21,7 +21,7 @@ public final class Utils {
 	 * @param filename
 	 * @return content as String
 	 */
-	public static String getFileContent(String filename) {
+	public static String getFileContent(String filename,String charset) {
 		StringBuffer content = new StringBuffer();
 		BufferedReader br = null;
 		try {
@@ -29,7 +29,7 @@ public final class Utils {
 			if(file.exists()&&file.isFile()&&file.length()>1024*1024){//TODO configurable
 				throw new IllegalAccessException("");
 			}
-			br = new BufferedReader(new InputStreamReader(new FileInputStream(filename),"UTF-8"));
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(filename),charset));
 			String line;
 			while ((line = br.readLine()) != null) {
 				content.append(line);

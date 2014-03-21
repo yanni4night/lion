@@ -23,9 +23,13 @@ develop
 1. Write JSON files in *src/main/webapp/\_data/*	
 2. Write templates in *src/main/webapp/template/*
 
+
+You can use [eclipse](http://www.eclipse.org) to open root directory as a project.
+
+
 changelog
 ======
-
+- 2014/03/21:support charset settting;
 - 2014/02/21:initialize;freemarker local supported;
 - 2014/02/22:support velocity.
 

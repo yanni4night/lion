@@ -5,7 +5,7 @@
 <title>Freemarker</title>
 </head>
 <body>
-   ${name}
+   JSON中数据输出：${name}
    <ul>
    <#list devices as devi>
    <li>${devi}</li>

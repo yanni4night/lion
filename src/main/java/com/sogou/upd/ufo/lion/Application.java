@@ -44,16 +44,15 @@ public final class Application {
 	 */
 	public static String WD_IMG_DIR = WD_STATIC_DIR + "/img";
 
-	public static String TPL_EXT = "";
-	private static volatile Application instance = new Application();
+	public static String TPL_EXT = ".ftl";
+	private static volatile Application instance =null;
 	private Template template;
 
-	private Config config = new Config();
+	private Config config =Config.getInstance();
 	private String engineName;
 
 	private Application() {
 		super();
-		config.init();
 		initTemplate();
 		TPL_EXT = TemplateEngineSetting.getTplExtByName(engineName);
 	}
@@ -79,7 +78,11 @@ public final class Application {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public Template getTemplate() {
 		return template;
 	}
@@ -87,9 +90,12 @@ public final class Application {
 	/**
 	 * Get global only {@link com.sogou.upd.ufo.lion.Application}
 	 * 
-	 * @return
+	 * @return Application
 	 */
-	public static Application getInstance() {
+	public synchronized static Application getInstance() {
+		if(null == instance){
+			instance = new Application();
+		}
 		return instance;
 	}
 }

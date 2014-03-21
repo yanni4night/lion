@@ -1,3 +1,4 @@
 {
-"template":"freemarker"
+"template":"freemarker",
+"charset":"UTF-8"
 }

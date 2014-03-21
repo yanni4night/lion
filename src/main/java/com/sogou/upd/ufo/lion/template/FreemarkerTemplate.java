@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.StringWriter;
 import java.util.Map;
 
+import com.sogou.upd.ufo.lion.Config;
+
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 
@@ -12,7 +14,7 @@ import freemarker.template.DefaultObjectWrapper;
  * 
  * @author yinyong
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.1
  * @see {@link com.sogou.upd.ufo.lion.template.Template}
  */
 public class FreemarkerTemplate implements Template {
@@ -28,7 +30,7 @@ public class FreemarkerTemplate implements Template {
 
 	@Override
 	public String render(String tplname, Map<String, Object> data) throws Exception {
-		freemarker.template.Template tpl = cfg.getTemplate(tplname);
+		freemarker.template.Template tpl = cfg.getTemplate(tplname,(String)Config.getInstance().get(Config.KEY_CHARSET));
 		StringWriter sw = new StringWriter();
 		tpl.process(data, sw);
 		return sw.toString();

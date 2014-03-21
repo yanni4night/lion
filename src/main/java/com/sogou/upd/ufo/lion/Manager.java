@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sogou.upd.ufo.lion.template.FreemarkerTemplate;
+import com.sogou.upd.ufo.lion.template.TemplateEngineSetting;
 import com.sogou.upd.ufo.lion.utils.FileWalker;
 
 /**
@@ -43,7 +44,8 @@ public final class Manager {
 		PrintWriter out = resp.getWriter();
 		Map<String, Object> data = new HashMap<String, Object>();
 		FileWalker fw = new FileWalker(Application.WD_TPL_DIR,
-				Application.TPL_EXT);
+				TemplateEngineSetting.getTplExtByName((String) Config
+						.getInstance().get(Config.KEY_TEMPLATE)));
 		data.put("tpls", fw.getRelFilesWithoutExt());
 		try {
 			out.print(template.render("index.ftl", data));
@@ -66,7 +68,7 @@ public final class Manager {
 		Map<String, Object> data = new HashMap<String, Object>();
 		FileWalker fw = new FileWalker(Application.WD_CSS_DIR, ".css");
 		data.put("css", fw.getRelFiles());
-		fw = new FileWalker(Application.WD_IMG_DIR, ".png,.gif,.bmp,.jpg");
+		fw = new FileWalker(Application.WD_IMG_DIR, ".png,.gif,.bmp,.jpg,.ico");
 		data.put("img", fw.getRelFiles());
 		fw = new FileWalker(Application.WD_JS_DIR, ".js");
 		data.put("js", fw.getRelFiles());

@@ -12,34 +12,44 @@ import com.sogou.upd.ufo.lion.utils.Utils;
  * 
  * @author yinyong
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.1.0
  */
 public final class Config {
 
-	public static String KEY_TEMPLATE = "template";
-
-	private boolean initialized = false;
+	public final static String KEY_TEMPLATE = "template";
+	public final static String KEY_CHARSET = "charset";
 
 	private Map<String, Object> manifest = new HashMap<String, Object>();
 	private Map<String, Object> defaultManifest = new HashMap<String, Object>();
 
+	private static Config config =null;
+	
+	private Config(){
+		this.init();
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public synchronized static Config getInstance(){
+		if(null==config)
+			config=new Config();
+		return config;
+	}
 	/**
 	 * Initialize with extra default map.
 	 * 
 	 * @param extra
 	 */
 	public void init(Map<String, Object> extra) {
-		if (initialized)
-			return;
 		loadManifest();
 		initDefaultManifest(extra);
-		initialized = true;
 	}
 
 	/**
 	 * Initialize.
 	 */
-	public void init() {
+	private void init() {
 		this.init(null);
 	}
 
@@ -64,7 +74,7 @@ public final class Config {
 	private void loadManifest() {
 		Gson gson = new Gson();
 		Map<String, Object> manifest = gson.fromJson(
-				Utils.getFileContent(Application.WD_PREFIX + "/manifest.json"),
+				Utils.getFileContent(Application.WD_PREFIX + "/manifest.json","UTF-8"),
 				new TypeToken<Map<String, Object>>() {
 				}.getType());
 		if (null != manifest) {

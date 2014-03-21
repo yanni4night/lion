@@ -5,7 +5,7 @@
 <title>Velocity</title>
 </head>
 <body>
-   $name
+   JSON中数据输出：$name
    <ul>
    #foreach ( $devi in $devices )
    <li>${devi}</li>

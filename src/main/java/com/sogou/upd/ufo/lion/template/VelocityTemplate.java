@@ -8,12 +8,14 @@ import java.util.Set;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
+import com.sogou.upd.ufo.lion.Config;
+
 /**
  * Velocity Template implement.
  * 
  * @author yinyong
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.1
  * @see {@link com.sogou.upd.ufo.lion.template.Template}
  */
 public class VelocityTemplate implements Template {
@@ -35,7 +37,7 @@ public class VelocityTemplate implements Template {
 		}
 		org.apache.velocity.Template template = null;
 
-		template = Velocity.getTemplate(tplname);
+		template = Velocity.getTemplate(tplname,(String)Config.getInstance().get(Config.KEY_CHARSET));
 
 		StringWriter sw = new StringWriter();
 

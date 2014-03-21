@@ -14,7 +14,7 @@
              <ul class="tlist">
                             <#list  tpls as tpl>
                             <li>
-                                <a class="title" target="_blank" href="${tpl}.ut">${tpl}.ftl</a>
+                                <a class="title" target="_blank" href="${tpl}.ut">${tpl}</a>
                                 <a class="mgr" target="_blank" href="${tpl}.data">data</a>
                             </li>
                             </#list>
