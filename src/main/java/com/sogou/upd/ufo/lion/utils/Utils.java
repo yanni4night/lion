@@ -2,9 +2,10 @@ package com.sogou.upd.ufo.lion.utils;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * Utils.
@@ -22,21 +23,18 @@ public final class Utils {
 	 */
 	public static String getFileContent(String filename) {
 		StringBuffer content = new StringBuffer();
-		FileReader fr = null;
 		BufferedReader br = null;
 		try {
 			File file=new File(filename);
 			if(file.exists()&&file.isFile()&&file.length()>1024*1024){//TODO configurable
 				throw new IllegalAccessException("");
 			}
-			fr = new FileReader(filename);
-			br = new BufferedReader(fr);
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(filename),"UTF-8"));
 			String line;
 			while ((line = br.readLine()) != null) {
 				content.append(line);
 			}
 			br.close();
-			fr.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			return "";
@@ -49,7 +47,7 @@ public final class Utils {
 		} finally {
 			try {
 				br.close();
-				fr.close();
+				//fr.close();
 			} catch (Exception ex) {
 			}
 		}

@@ -1,6 +1,6 @@
 {
-"name":"yinyong",
-"devices":[
-"N7100","Macbook Air","Hasee"
-]
+    "name": "测试",
+    "devices": [
+        "N7100", "Macbook Air", "Hasee"
+    ]
 }

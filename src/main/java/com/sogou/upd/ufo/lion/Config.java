@@ -55,6 +55,7 @@ public final class Config {
 
 	private void initDefaultManifest(Map<String, Object> extra) {
 		defaultManifest.put("template", "freemarker");
+		defaultManifest.put("charset", "UTF-8");
 		if (null != extra) {
 			defaultManifest.putAll(extra);
 		}
