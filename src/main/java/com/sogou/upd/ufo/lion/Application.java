@@ -24,11 +24,11 @@ public final class Application {
 	/**
 	 * JSON data directory in working-directory
 	 */
-	public static String WD_DATA_DIR = WD_PREFIX + "/_data";
+	public static String WD_DATA_DIR = WD_PREFIX + "/"+(String)Config.getInstance().get("dataDir");
 	/**
 	 * templates directory in working-directory
 	 */
-	public static String WD_TPL_DIR = WD_PREFIX + "/template";
+	public static String WD_TPL_DIR = WD_PREFIX + "/"+(String)Config.getInstance().get("templateDir");
 	/**
 	 * static resources directory in working-directory
 	 */

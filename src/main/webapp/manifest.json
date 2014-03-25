@@ -1,5 +1,7 @@
 {
-"template":"freemarker",
-"charset":"UTF-8",
-"baseDir":"projects/demo"
+	"template":"freemarker",
+	"charset":"UTF-8",
+	"baseDir":"projects/demo",
+	"templateDir":"template",
+	"dataDir":"_data"
 }

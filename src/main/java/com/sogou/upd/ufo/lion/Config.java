@@ -67,6 +67,8 @@ public final class Config {
 		defaultManifest.put("template", "freemarker");
 		defaultManifest.put("charset", "UTF-8");
 		defaultManifest.put("baseDir", "src/main/webapp/");
+		defaultManifest.put("dataDir", "_data/");
+		defaultManifest.put("templateDir", "template/");
 		if (null != extra) {
 			defaultManifest.putAll(extra);
 		}

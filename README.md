@@ -35,11 +35,13 @@ The default value of configration items in manifest.json is:
  - template:freemarker/velocity
  - charset:'utf-8'
  - baseDir:'src/main/webapp'
+ - templateDir:'template'
+ - dataDir:'_data'
 
 
 changelog
 ======
-- 2014/03/25:move default working directory to <code>projects/demo</code>
+- 2014/03/25:move default working directory to <code>projects/demo</code>,make template directory&json template directory configurable
 - 2014/03/21:support charset settting;
 - 2014/02/21:initialize;freemarker local supported;
 - 2014/02/22:support velocity.

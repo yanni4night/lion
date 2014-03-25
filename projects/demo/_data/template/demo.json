@@ -1,0 +1,6 @@
+{
+    "name": "templateDir为空才会引用到这里",
+    "devices": [
+        "N7100", "Macbook Air", "Hasee"
+    ]
+}
