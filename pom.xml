@@ -56,9 +56,11 @@
                 <version>8.1.14.v20131031</version>
                 <configuration>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
-                    <webAppConfig>
+                    <webAppSourceDirectory>projects/demo</webAppSourceDirectory>
+                    <webApp>
                         <contextPath>/</contextPath>
-                    </webAppConfig>
+                        <descriptor>src/main/webapp/WEB-INF/web.xml</descriptor>
+                    </webApp>
                     <connectors>
                         <connector implementation="org.eclipse.jetty.server.bio.SocketConnector">
                             <port>8080</port>

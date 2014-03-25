@@ -1,5 +1,5 @@
 {
-    "name": "测试",
+    "name": "测试外部工作目录",
     "devices": [
         "N7100", "Macbook Air", "Hasee"
     ]

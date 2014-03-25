@@ -15,10 +15,12 @@ import com.sogou.upd.ufo.lion.template.TemplateEngineSetting;
 public final class Application {
 	public static String MG_PREFIX = "./src/main/resources";
 	public static String MG_TPL_DIR = MG_PREFIX + "/template";
+	
+	public static String DEFAULT_WD_PREFIX = "src/main/webapp";
 	/**
 	 * root of working-directory
 	 */
-	public static String WD_PREFIX = "./src/main/webapp";
+	public static String WD_PREFIX = (String)Config.getInstance().get("baseDir");// "./src/main/webapp";
 	/**
 	 * JSON data directory in working-directory
 	 */

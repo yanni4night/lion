@@ -66,6 +66,7 @@ public final class Config {
 	private void initDefaultManifest(Map<String, Object> extra) {
 		defaultManifest.put("template", "freemarker");
 		defaultManifest.put("charset", "UTF-8");
+		defaultManifest.put("baseDir", "src/main/webapp/");
 		if (null != extra) {
 			defaultManifest.putAll(extra);
 		}
@@ -74,7 +75,7 @@ public final class Config {
 	private void loadManifest() {
 		Gson gson = new Gson();
 		Map<String, Object> manifest = gson.fromJson(
-				Utils.getFileContent(Application.WD_PREFIX + "/manifest.json","UTF-8"),
+				Utils.getFileContent(Application.DEFAULT_WD_PREFIX + "/manifest.json","UTF-8"),
 				new TypeToken<Map<String, Object>>() {
 				}.getType());
 		if (null != manifest) {
